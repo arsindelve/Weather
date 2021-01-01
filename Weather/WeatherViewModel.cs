@@ -1,5 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Threading;
 using System.Threading.Tasks;
+using Windows.System.Threading;
+using Windows.UI.Xaml;
 using Weather.API;
 
 namespace Weather
@@ -10,13 +14,15 @@ namespace Weather
 
         private CurrentWeatherResponse _currentWeather;
         private ObservableCollection<ForecastResponse> _forecast;
+        private DateTime _updated;
+        private Timer _timer;
 
         public CurrentWeatherResponse CurrentWeather
         {
             get => _currentWeather;
-            set
+            private set
             {
-                _currentWeather = value; 
+                _currentWeather = value;
                 OnPropertyChanged();
             }
         }
@@ -24,7 +30,13 @@ namespace Weather
         public ObservableCollection<ForecastResponse> Forecast
         {
             get => _forecast;
-            set { _forecast = value; OnPropertyChanged(); }
+            private set { _forecast = value; OnPropertyChanged(); }
+        }
+
+        public DateTime Updated
+        {
+            get => _updated;
+            private set { _updated = value; OnPropertyChanged(); }
         }
 
         public WeatherViewModel(IWeatherApiClient client)
@@ -32,12 +44,14 @@ namespace Weather
             _client = client;
         }
 
-        internal async Task GetForecast()
+     
+
+        private async Task GetForecast()
         {
             Forecast = new ObservableCollection<ForecastResponse>(await _client.Forecast());
             CurrentWeather = await _client.CurrentWeather();
+            Updated = DateTime.Now;
         }
-
 
         public async Task Initialize()
         {

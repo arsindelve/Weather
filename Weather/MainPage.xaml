@@ -43,6 +43,10 @@
                                    Orientation="Horizontal" >
 
                     <Border Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
+                        <TextBlock FontSize="20"  FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.Updated, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Updated {0:HH:mm}'}" Foreground="#FF9DF00D"></TextBlock>
+                    </Border>
+
+                    <Border Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
                         <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.CurrentWeather.Temperature, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Temp {0:0}° F'}"></TextBlock>
                     </Border>
 
