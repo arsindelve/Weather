@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Weather.API
 {
     public interface IWeatherApiClient
     {
-        CurrentWeatherResponse CurrentWeather();
+        Task<CurrentWeatherResponse> CurrentWeather();
 
-        List<ForecastResponse> Forecast();
+        Task<List<ForecastResponse>> Forecast();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -10,22 +11,22 @@ namespace Weather.API
         private static double latitude = 32.745499;
         private static double longitude = -97.003532;
 
-        public CurrentWeatherResponse CurrentWeather()
+        public async Task<CurrentWeatherResponse> CurrentWeather()
         {
             var client = new RestClient($"https://weatherbit-v1-mashape.p.rapidapi.com/current?lon={longitude}&lat={latitude}&units=I");
             var request = new RestRequest(Method.GET);
             AddHeaders(request);
-            var response = client.Execute(request);
+            var response = await client.ExecuteAsync(request);
             var content = response.Content;
             return JsonConvert.DeserializeObject<ApiResponse<CurrentWeatherResponse>>(content).Data.FirstOrDefault();
         }
 
-        public List<ForecastResponse> Forecast()
+        public async Task<List<ForecastResponse>> Forecast()
         {
             var client = new RestClient($"https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat={latitude}&lon={longitude}&units=I");
             var request = new RestRequest(Method.GET);
             AddHeaders(request);
-            var response = client.Execute(request);
+            var response = await client.ExecuteAsync(request);
             var content = response.Content;
             return JsonConvert.DeserializeObject<ApiResponse<ForecastResponse>>(content).Data;
         }
