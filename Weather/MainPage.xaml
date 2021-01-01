@@ -9,6 +9,39 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.Background>
+                <ImageBrush ImageSource="Assets/night.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+
+            <VariableSizedWrapGrid ItemHeight="60" Margin="20"
+                                   ItemWidth="250"
+                                   Orientation="Horizontal" Background="#7FFBF6F6">
+                <TextBox TextAlignment="Center" IsReadOnly="True" Margin="10" Text="All" Height="50" FontSize="20" FontWeight="Normal" />
+                <TextBox TextAlignment="Center" IsReadOnly="True" Margin="10" Text="All" Height="50" FontSize="20" FontWeight="Normal" />
+                <TextBox TextAlignment="Center" IsReadOnly="True" Margin="10" Text="All" Height="50" FontSize="20" FontWeight="Normal" />
+                <TextBox TextAlignment="Center" IsReadOnly="True" Margin="10" Text="All" Height="50" FontSize="20" FontWeight="Normal" />
+                <TextBox TextAlignment="Center" IsReadOnly="True" Margin="10" Text="All" Height="50" FontSize="20" FontWeight="Normal" />
+                
+
+            </VariableSizedWrapGrid>
+
+        </Grid>
+
+
+
+
+
 
     </Grid>
 </Page>

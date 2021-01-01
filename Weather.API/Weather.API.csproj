@@ -120,6 +120,10 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ApiResponse.cs" />
+    <Compile Include="CurrentWeatherResponse.cs" />
+    <Compile Include="ForecastResponse.cs" />
+    <Compile Include="IWeatherApiClient.cs" />
     <Compile Include="WeatherApiClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Weather.API.rd.xml" />
