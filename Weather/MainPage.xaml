@@ -176,14 +176,14 @@
                         <Border CornerRadius="10"  Margin="20"  Padding="30" Background="#CC121212" Grid.Row="0">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock FontWeight="Bold" TextAlignment="Center" >Temperature:</TextBlock>
-                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" >Pressure</TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.Environment.Temperature, Mode=OneWay}" ></TextBlock>
                             </StackPanel>
                         </Border>
 
                         <Border CornerRadius="10" Margin="20"  Padding="30" Background="#CC121212" Grid.Row="1">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock FontWeight="Bold" TextAlignment="Center" >Humidity:</TextBlock>
-                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" >Pressure</TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.Environment.Humidity, Mode=OneWay}"></TextBlock>
                             </StackPanel>
                         </Border>
 
@@ -191,7 +191,7 @@
                         <Border CornerRadius="10" Margin="20"  Padding="30" Background="#CC121212" Grid.Row="2">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock FontWeight="Bold" TextAlignment="Center" >Pressure:</TextBlock>
-                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" >Pressure</TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.Environment.Pressure, Mode=OneWay}"></TextBlock>
                             </StackPanel>
                         </Border>
 
@@ -199,7 +199,7 @@
                         <Border CornerRadius="10" Margin="20"  Padding="30" Background="#CC121212" Grid.Row="3">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock FontWeight="Bold" TextAlignment="Center" >Updated:</TextBlock>
-                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" >Pressure</TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.Updated, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:HH:mm}'}"></TextBlock>
                             </StackPanel>
                         </Border>
 
@@ -207,7 +207,7 @@
                         <Border CornerRadius="10" Margin="20"  Padding="30" Background="#CC121212" Grid.Row="4">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock FontWeight="Bold" TextAlignment="Center" >Update In:</TextBlock>
-                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" >Pressure</TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.NextRefresh, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:m\\\\:ss}'}"></TextBlock>
                             </StackPanel>
                         </Border>
 

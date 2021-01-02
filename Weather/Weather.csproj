@@ -123,12 +123,15 @@
     <Compile Include="Converter\StringFormatConverter.cs" />
     <Compile Include="Converter\TemperatureConverter.cs" />
     <Compile Include="Fake\FakeCurrentWeatherResponse.cs" />
+    <Compile Include="Fake\FakeEnvironment.cs" />
     <Compile Include="Fake\FakeForecast.cs" />
     <Compile Include="Fake\FakeForecastResponse.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\InsideViewModel.cs" />
+    <Compile Include="ViewModel\OutsideWeatherViewModel.cs" />
     <Compile Include="ViewModel\WeatherViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
