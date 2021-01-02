@@ -133,6 +133,7 @@
     <Compile Include="Lights.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SenseHatDemo.cs" />
+    <Compile Include="SenseHatHelper.cs" />
     <EmbeddedResource Include="Properties\Weather.SenseHat.rd.xml" />
   </ItemGroup>
   <ItemGroup>

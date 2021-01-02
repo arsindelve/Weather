@@ -121,6 +121,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ColorHelper.cs" />
+    <Compile Include="ExecutionHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Weather.Common.rd.xml" />
   </ItemGroup>

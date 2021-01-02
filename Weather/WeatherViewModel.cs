@@ -37,7 +37,7 @@ namespace Weather
         public string DallasBackground
         {
             get => _dallasBackground;
-            set { _dallasBackground = value; OnPropertyChanged(); }
+            private set { _dallasBackground = value; OnPropertyChanged(); }
         }
 
         public DateTime Updated

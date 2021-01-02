@@ -1,46 +1,42 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.UI;
-using Windows.UI.Xaml.Media.Animation;
 using Emmellsoft.IoT.Rpi.SenseHat;
+using Weather.Common;
 
 namespace Weather.SenseHat
 {
-    public class Lights
+    public static class Lights
     {
         private static readonly Random Random = new Random();
 
         public static async Task Temperature(double temperature)
         {
-            ISenseHat senseHat = await SenseHatFactory.GetSenseHat();
-            Fill(senseHat, temperature);
-        }
-        
-        public static async Task Disco()
-        {
-            ISenseHat senseHat = await SenseHatFactory.GetSenseHat();
-         
-            TaskFactory tf = new TaskFactory();
-            await tf.StartNew(() =>
-            {
-                Stopwatch s = new Stopwatch();
-                s.Start();
-                while (s.Elapsed < TimeSpan.FromSeconds(5))
-                {
-                    Flash(senseHat);
-                }
+            var senseHat = await SenseHatHelper.GetSenseHat();
+            
+            if (senseHat == null)
+                return;
 
-                s.Stop();
-
-            });
-        }
-
-        private static void Fill(ISenseHat senseHat, double temperature)
-        {
             var c = Common.ColorHelper.ColorFromTemperature(temperature);
             var c2 = Color.FromArgb(c.A, c.R, c.G, c.B);
+
+            FillDisplayWithSolidColor(senseHat, c2);
+        }
+
+        public static async Task Disco()
+        {
+            var senseHat = await SenseHatHelper.GetSenseHat();
+
+            if (senseHat == null)
+                return;
+
+            Action a = () => FillDisplayWithRandomColor(senseHat);
+            await ExecutionHelper.RunTaskForTimespan(TimeSpan.FromSeconds(5), a);
+        }
+
+        private static void FillDisplayWithSolidColor(ISenseHat senseHat, Color c2)
+        {
             for (int y = 0; y < 8; y++)
             {
                 for (int x = 0; x < 8; x++)
@@ -54,7 +50,7 @@ namespace Weather.SenseHat
             Thread.Sleep(TimeSpan.FromMilliseconds(50));
         }
 
-        private static void Flash(ISenseHat senseHat)
+        private static void FillDisplayWithRandomColor(ISenseHat senseHat)
         {
             for (int y = 0; y < 8; y++)
             {
