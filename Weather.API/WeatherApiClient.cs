@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
+using Weather.Common.Model;
 
 namespace Weather.API
 {

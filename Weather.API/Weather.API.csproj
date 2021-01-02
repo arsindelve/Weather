@@ -121,8 +121,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ApiResponse.cs" />
-    <Compile Include="CurrentWeatherResponse.cs" />
-    <Compile Include="ForecastResponse.cs" />
     <Compile Include="IWeatherApiClient.cs" />
     <Compile Include="WeatherApiClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -138,6 +136,12 @@
     <PackageReference Include="RestSharp">
       <Version>106.11.7</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Weather.Common\Weather.Common.csproj">
+      <Project>{3810f9aa-cb3c-4f8c-8cd4-5bd07910f935}</Project>
+      <Name>Weather.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

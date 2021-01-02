@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converter="using:Weather.Converter"
-    xmlns:api="using:Weather.API"
+    xmlns:model="using:Weather.Common.Model"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -20,6 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" >
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -29,17 +30,20 @@
             </Grid.RowDefinitions>
 
             <Grid.Background>
-                <ImageBrush ImageSource="{x:Bind _viewModel.DallasBackground, Mode=OneWay}" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="{x:Bind  _viewModel.OutsideWeather.DallasBackground, Mode=OneWay}" Stretch="UniformToFill"/>
             </Grid.Background>
 
-
-            <Border Grid.Row="0" Padding="8" BorderThickness="0" Background="#9962CB12"  >
+            <Border Grid.Row="0" Padding="8" BorderThickness="0" Background="ForestGreen"  >
                 <Viewbox  Margin="6" >
-                    <TextBlock FontWeight="Bold" Width="450" TextAlignment="Center" >Current Conditions</TextBlock>
+                    <TextBlock FontWeight="Bold" Width="450" TextAlignment="Center" >Current Conditions In Grand Prairie</TextBlock>
                 </Viewbox>
             </Border>
 
-            <Border CornerRadius="5 " Margin="20 10 20 10" Padding="8"   BorderThickness="0" Grid.Row="1" Background="#99121212"  >
+            <Border CornerRadius="5 " 
+                    Margin="20 10 20 10" 
+                    Padding="8"  
+                    BorderThickness="0" Grid.Row="1" 
+                    Background="#CC121212"  >
                 <Viewbox  Margin="6" >
 
                     <Grid Width="800" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -58,33 +62,33 @@
 
 
                         <Border Grid.Row="0" Grid.Column="0" Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
-                            <TextBlock Foreground="{x:Bind _viewModel.CurrentWeather.Temperature, Mode=OneWay, Converter={StaticResource TemperatureConverter}}" 
+                            <TextBlock Foreground="{x:Bind _viewModel.OutsideWeather.CurrentWeather.Temperature, Mode=OneWay, Converter={StaticResource TemperatureConverter}}" 
                                    FontSize="20" 
                                    FontWeight="Bold" 
                                    TextAlignment="Center" 
-                                   Text="{x:Bind _viewModel.CurrentWeather.Temperature, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Temp {0:0}° F'}">
+                                   Text="{x:Bind _viewModel.OutsideWeather.CurrentWeather.Temperature, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Temp {0:0}° F'}">
 
                             </TextBlock>
                         </Border>
 
                         <Border Margin="10" Grid.Row="0" Grid.Column="1" Height="45"  BorderBrush="Gray" BorderThickness="0" >
-                            <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.CurrentWeather.Precipitation, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0} Inches Rain'}"></TextBlock>
+                            <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.OutsideWeather.CurrentWeather.Precipitation, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0} Inches Rain'}"></TextBlock>
                         </Border>
 
                         <Border Margin="10" Height="45" Grid.Row="0" Grid.Column="2"  BorderBrush="Gray" BorderThickness="0" >
-                            <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.CurrentWeather.Clouds, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Clouds {0} %'}"></TextBlock>
+                            <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.OutsideWeather.CurrentWeather.Clouds, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Clouds {0} %'}"></TextBlock>
                         </Border>
 
                         <Border Margin="10" Height="45" Grid.Row="1" Grid.Column="0"  BorderBrush="Gray" BorderThickness="0" >
-                            <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.CurrentWeather.WindSpeed, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Wind {0:0} mph'}"></TextBlock>
+                            <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.OutsideWeather.CurrentWeather.WindSpeed, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Wind {0:0} mph'}"></TextBlock>
                         </Border>
 
                         <Border Grid.Row="1" Grid.Column="1" Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
-                            <TextBlock FontSize="20"  FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.Updated, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Updated {0:HH:mm}'}"></TextBlock>
+                            <TextBlock FontSize="20"  FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.OutsideWeather.Updated, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Updated {0:HH:mm}'}"></TextBlock>
                         </Border>
 
                         <Border Margin="10" Height="45" Grid.Row="1" Grid.Column="2"  BorderBrush="Gray" BorderThickness="0" >
-                            <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.NextRefresh, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Update in {0:m\\\\:ss}'}"></TextBlock>
+                            <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.OutsideWeather.NextRefresh, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Update in {0:m\\\\:ss}'}"></TextBlock>
                         </Border>
 
 
@@ -92,16 +96,17 @@
                 </Viewbox>
             </Border>
 
-            <Border Grid.Row="2" Padding="8" BorderThickness="0"  Background="#9962CB12"  >
+            <Border Grid.Row="2" Padding="8" BorderThickness="0"  Background="ForestGreen"  >
                 <Viewbox  Margin="6" >
                     <TextBlock FontWeight="Bold" Width="400" TextAlignment="Center" >Forecast</TextBlock>
                 </Viewbox>
             </Border>
 
-            <ListView HorizontalAlignment="Stretch" CornerRadius="5 " Background="#99121212" Margin="20 10 20 20" Padding="8"  Grid.Row="3" ItemsSource="{x:Bind _viewModel.Forecast, Mode=OneWay }">
+            <ListView HorizontalAlignment="Stretch" CornerRadius="5 " Background="#CC121212" Margin="20 10 20 20" Padding="8"  Grid.Row="3" 
+                      ItemsSource="{x:Bind _viewModel.OutsideWeather.Forecast, Mode=OneWay }">
 
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="api:ForecastResponse">
+                    <DataTemplate x:DataType="model:ForecastResponse">
                         <Viewbox  >
                             <Border Padding="6"  >
                                 <Grid Width="600" >
@@ -132,6 +137,89 @@
             </ListView>
 
         </Grid>
+
+
+        <Grid Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+            <Grid.Background>
+                <ImageBrush ImageSource="Assets/home.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+
+
+            <Border Grid.Row="0" Padding="8" BorderThickness="0" Background="ForestGreen"  >
+                <Viewbox  Margin="6" >
+                    <TextBlock FontWeight="Bold" Width="450" TextAlignment="Center" >Current Conditions Inside</TextBlock>
+                </Viewbox>
+            </Border>
+
+            <Border CornerRadius="5 " Margin="20 10 20 10" Padding="30"   
+                    BorderThickness="0" Grid.Row="1"  >
+
+                <Viewbox>
+
+                    <Grid Width="450">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Border CornerRadius="10"  Margin="20"  Padding="30" Background="#CC121212" Grid.Row="0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock FontWeight="Bold" TextAlignment="Center" >Temperature:</TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" >Pressure</TextBlock>
+                            </StackPanel>
+                        </Border>
+
+                        <Border CornerRadius="10" Margin="20"  Padding="30" Background="#CC121212" Grid.Row="1">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock FontWeight="Bold" TextAlignment="Center" >Humidity:</TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" >Pressure</TextBlock>
+                            </StackPanel>
+                        </Border>
+
+
+                        <Border CornerRadius="10" Margin="20"  Padding="30" Background="#CC121212" Grid.Row="2">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock FontWeight="Bold" TextAlignment="Center" >Pressure:</TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" >Pressure</TextBlock>
+                            </StackPanel>
+                        </Border>
+
+
+                        <Border CornerRadius="10" Margin="20"  Padding="30" Background="#CC121212" Grid.Row="3">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock FontWeight="Bold" TextAlignment="Center" >Updated:</TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" >Pressure</TextBlock>
+                            </StackPanel>
+                        </Border>
+
+
+                        <Border CornerRadius="10" Margin="20"  Padding="30" Background="#CC121212" Grid.Row="4">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock FontWeight="Bold" TextAlignment="Center" >Update In:</TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" >Pressure</TextBlock>
+                            </StackPanel>
+                        </Border>
+
+
+                    </Grid>
+
+                </Viewbox>
+
+            </Border>
+
+        </Grid>
+
 
     </Grid>
 </Page>

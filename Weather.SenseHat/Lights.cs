@@ -4,9 +4,30 @@ using System.Threading.Tasks;
 using Windows.UI;
 using Emmellsoft.IoT.Rpi.SenseHat;
 using Weather.Common;
+using Weather.Common.Model;
 
 namespace Weather.SenseHat
 {
+    public static class Sensors
+    {
+        public static async Task<InsideEnvironment> GetEnvironment()
+        {
+            var senseHat = await SenseHatHelper.GetSenseHat();
+            
+            if (senseHat == null)
+                return null;
+
+            var s = senseHat.Sensors;
+
+            return new InsideEnvironment
+            {
+                Humidity = s.Humidity,
+                Temperature = s.Temperature,
+                Pressure = s.Pressure,
+            };
+        }
+    }
+
     public static class Lights
     {
         private static readonly Random Random = new Random();

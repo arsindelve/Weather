@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Weather.API
+namespace Weather.Common.Model
 {
     public class ForecastResponse : CurrentWeatherResponse
     {

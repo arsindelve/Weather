@@ -1,5 +1,6 @@
 ﻿using System;
 using Weather.API;
+using Weather.Common.Model;
 
 namespace Weather.Fake
 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Weather.API;
+using Weather.Common.Model;
 
 namespace Weather.Fake
 {

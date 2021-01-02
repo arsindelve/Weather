@@ -1,6 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Weather.API;
+using Weather.ViewModel;
 
 namespace Weather
 {
@@ -12,7 +12,7 @@ namespace Weather
         {
             InitializeComponent();
 
-            _viewModel = new WeatherViewModel(new WeatherApiClient());
+            _viewModel = new WeatherViewModel();
             DataContext = _viewModel;
             Loaded += MainPage_Loaded;
         }
