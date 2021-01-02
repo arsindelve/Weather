@@ -41,16 +41,30 @@
             </Border>
 
             <Border CornerRadius="5 " Margin="20 10 20 10" Padding="8"   BorderThickness="0" Grid.Row="1" Background="#99121212"  >
+                <Viewbox  Margin="6" >
+                
+                    <Grid Width="800" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+             
+                        </Grid.RowDefinitions>
 
-                <VariableSizedWrapGrid 
-                                   ItemWidth="200" 
-                                   Orientation="Horizontal" >
+                  
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
 
-                    <Border Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
+                            </Grid.ColumnDefinitions>
+
+
+
+                            <Border Grid.Row="0" Grid.Column="0" Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
                         <TextBlock FontSize="20"  FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.Updated, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Updated {0:HH:mm}'}" Foreground="#FF9DF00D"></TextBlock>
                     </Border>
 
-                    <Border Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
+                        <Border Grid.Row="0" Grid.Column="1" Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
                         <TextBlock Foreground="{x:Bind _viewModel.CurrentWeather.Temperature, Mode=OneWay, Converter={StaticResource TemperatureConverter}}" 
                                    FontSize="20" 
                                    FontWeight="Bold" 
@@ -60,19 +74,20 @@
                         </TextBlock>
                     </Border>
 
-                    <Border Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
+                        <Border Margin="10" Grid.Row="0" Grid.Column="2" Height="45"  BorderBrush="Gray" BorderThickness="0" >
                         <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.CurrentWeather.Precipitation, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0} Inches Rain'}"></TextBlock>
                     </Border>
 
-                    <Border Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
+                        <Border Margin="10" Height="45" Grid.Row="1" Grid.Column="0"  BorderBrush="Gray" BorderThickness="0" >
                         <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.CurrentWeather.Clouds, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Clouds {0} %'}"></TextBlock>
                     </Border>
 
-                    <Border Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
+                        <Border Margin="10" Height="45" Grid.Row="1" Grid.Column="1"  BorderBrush="Gray" BorderThickness="0" >
                         <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.CurrentWeather.WindSpeed, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Wind {0:0} mph'}"></TextBlock>
                     </Border>
 
-                </VariableSizedWrapGrid>
+                    </Grid>
+                </Viewbox>
             </Border>
 
             <Border Grid.Row="2" Padding="8" BorderThickness="0"  Background="#9962CB12"  >
