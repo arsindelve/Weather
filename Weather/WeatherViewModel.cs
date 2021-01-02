@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Windows.System.Threading;
 using Windows.UI.Core;
 using Weather.API;
+using Weather.Fake;
 using Weather.SenseHat;
 
 namespace Weather
@@ -58,7 +59,7 @@ namespace Weather
                         await GetForecast();
                     });
 
-            }, TimeSpan.FromMinutes(1));
+            }, TimeSpan.FromSeconds(20));
         }
 
         private async Task GetForecast()
@@ -66,13 +67,15 @@ namespace Weather
             //Forecast = new ObservableCollection<ForecastResponse>(await _client.Forecast());
             //CurrentWeather = await _client.CurrentWeather();
 
-            Forecast = new ObservableCollection<ForecastResponse>();
-            CurrentWeather = new CurrentWeatherResponse();
-            
+            Forecast = new ObservableCollection<ForecastResponse>(FakeForecast.GetForecast());
+            CurrentWeather = new FakeCurrentWeatherResponse();
+
             Updated = DateTime.Now;
 
             DallasBackground = Updated.Hour >= 19 ? "Assets/night.jpg" : "Assets/day.jpg";
+
             await Lights.Disco();
+            await Lights.Temperature(CurrentWeather.Temperature);
         }
 
         public async Task Initialize()

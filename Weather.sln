@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.API", "Weather.API\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.SenseHat", "Weather.SenseHat\Weather.SenseHat.csproj", "{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Common", "Weather.Common\Weather.Common.csproj", "{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +91,26 @@ Global
 		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|x64.Build.0 = Release|x64
 		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|x86.ActiveCfg = Release|x86
 		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|x86.Build.0 = Release|x86
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Debug|ARM.ActiveCfg = Debug|ARM
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Debug|ARM.Build.0 = Debug|ARM
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Debug|ARM64.Build.0 = Debug|ARM64
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Debug|x64.ActiveCfg = Debug|x64
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Debug|x64.Build.0 = Debug|x64
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Debug|x86.ActiveCfg = Debug|x86
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Debug|x86.Build.0 = Debug|x86
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Release|ARM.ActiveCfg = Release|ARM
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Release|ARM.Build.0 = Release|ARM
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Release|ARM64.ActiveCfg = Release|ARM64
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Release|ARM64.Build.0 = Release|ARM64
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Release|x64.ActiveCfg = Release|x64
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Release|x64.Build.0 = Release|x64
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Release|x86.ActiveCfg = Release|x86
+		{3810F9AA-CB3C-4F8C-8CD4-5BD07910F935}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

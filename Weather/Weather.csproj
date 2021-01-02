@@ -121,6 +121,10 @@
     </Compile>
     <Compile Include="BaseViewModel.cs" />
     <Compile Include="Converter\StringFormatConverter.cs" />
+    <Compile Include="Converter\TemperatureConverter.cs" />
+    <Compile Include="Fake\FakeCurrentWeatherResponse.cs" />
+    <Compile Include="Fake\FakeForecast.cs" />
+    <Compile Include="Fake\FakeForecastResponse.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -163,6 +167,10 @@
     <ProjectReference Include="..\Weather.API\Weather.API.csproj">
       <Project>{089b9cca-0927-4efb-a707-69dd18410726}</Project>
       <Name>Weather.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Weather.Common\Weather.Common.csproj">
+      <Project>{3810f9aa-cb3c-4f8c-8cd4-5bd07910f935}</Project>
+      <Name>Weather.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Weather.SenseHat\Weather.SenseHat.csproj">
       <Project>{e22b70f0-e1e7-4c28-88b5-62f2deac42f2}</Project>

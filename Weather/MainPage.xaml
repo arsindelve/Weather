@@ -11,6 +11,7 @@
 
     <Page.Resources>
         <converter:StringFormatConverter x:Key="StringFormatConverter" />
+        <converter:TemperatureConverter x:Key="TemperatureConverter"/>
     </Page.Resources>
 
     <Grid>
@@ -46,7 +47,13 @@
                     </Border>
 
                     <Border Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
-                        <TextBlock FontSize="20" FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.CurrentWeather.Temperature, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Temp {0:0}° F'}"></TextBlock>
+                        <TextBlock Foreground="{x:Bind _viewModel.CurrentWeather.Temperature, Mode=OneWay, Converter={StaticResource TemperatureConverter}}" 
+                                   FontSize="20" 
+                                   FontWeight="Bold" 
+                                   TextAlignment="Center" 
+                                   Text="{x:Bind _viewModel.CurrentWeather.Temperature, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Temp {0:0}° F'}">
+
+                        </TextBlock>
                     </Border>
 
                     <Border Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
@@ -80,7 +87,7 @@
                                 Orientation="Horizontal" >
 
                                 <TextBlock FontSize="16" FontWeight="Bold" Margin="15 0 0 0" Text="{x:Bind ForecastTime, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:ddd H:mm}'}"></TextBlock>
-                                <TextBlock FontSize="16" Margin="15 0 0 0" FontWeight="Bold"  Text="{x:Bind Temperature, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:0}° F'}"></TextBlock>
+                                <TextBlock FontSize="18" Margin="15 0 0 0" FontWeight="Bold" Foreground="{x:Bind Temperature, Mode=OneWay, Converter={StaticResource TemperatureConverter}}"   Text="{x:Bind Temperature, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:0}° F'}"></TextBlock>
                                 <TextBlock FontSize="16" FontWeight="Bold" Margin="15 0 0 0" Text="{x:Bind Precipitation, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0} Inches'}"></TextBlock>
                                 <TextBlock FontSize="16" FontWeight="Bold" Margin="15 0 0 0" Text="{x:Bind  Clouds, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0}%'}"></TextBlock>
                                 <TextBlock FontSize="16" FontWeight="Bold" Margin="15 0 0 0" Text="{x:Bind WindSpeed, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:0} mph'}"></TextBlock>
