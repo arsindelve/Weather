@@ -25,15 +25,19 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <Grid.Background>
-                <ImageBrush ImageSource="{x:Bind _viewModel.DallasBackground}" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="{x:Bind _viewModel.DallasBackground, Mode=OneWay}" Stretch="UniformToFill"/>
             </Grid.Background>
 
-            <Border CornerRadius="5" Margin="20 20 20 0" Padding="8"   BorderThickness="0" Grid.Row="0" Background="#99121212"  >
-                <TextBlock FontSize="30" FontWeight="Bold" TextAlignment="Center" >Current Conditions</TextBlock>
+
+            <Border Grid.Row="0" Padding="8" BorderThickness="0" Background="#9962CB12"  >
+                <Viewbox  Margin="6" >
+                    <TextBlock FontWeight="Bold" Width="450" TextAlignment="Center" >Current Conditions</TextBlock>
+                </Viewbox>
             </Border>
 
             <Border CornerRadius="5 " Margin="20 10 20 10" Padding="8"   BorderThickness="0" Grid.Row="1" Background="#99121212"  >
@@ -71,10 +75,11 @@
                 </VariableSizedWrapGrid>
             </Border>
 
-            <Border CornerRadius="5 " Margin="20 0 20 0" Padding="8"   BorderThickness="0" Grid.Row="2" Background="#99121212"  >
-                <TextBlock FontSize="30" FontWeight="Bold" TextAlignment="Center" >Forecast</TextBlock>
+            <Border Grid.Row="2" Padding="8" BorderThickness="0"  Background="#9962CB12"  >
+                <Viewbox  Margin="6" >
+                    <TextBlock FontWeight="Bold" Width="400" TextAlignment="Center" >Forecast</TextBlock>
+                </Viewbox>
             </Border>
-
 
             <ListView HorizontalAlignment="Stretch" CornerRadius="5 " Background="#99121212" Margin="20 10 20 20" Padding="8"  Grid.Row="3" ItemsSource="{x:Bind _viewModel.Forecast, Mode=OneWay }">
 
