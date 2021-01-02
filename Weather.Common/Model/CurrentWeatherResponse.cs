@@ -17,5 +17,8 @@ namespace Weather.Common.Model
 
         [JsonProperty("temp")]
         public double Temperature { get; set; }
+
+        [JsonProperty("pop")]
+        public double ChanceOfPrecipitation { get; set; }
     }
 }

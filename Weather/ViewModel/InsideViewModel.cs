@@ -11,11 +11,11 @@ namespace Weather.ViewModel
 {
     public class InsideViewModel : BaseViewModel
     {
-        private const bool FakeData = true;
+        private const bool FakeData = false;
         private TimeSpan _nextRefresh;
         private DateTime _updated;
         private InsideEnvironment _environment;
-        private const int _refreshInterval = 1;
+        private const int RefreshInterval = 1;
 
         public InsideEnvironment Environment
         {
@@ -45,7 +45,7 @@ namespace Weather.ViewModel
                 await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal,
                     async () => { await GetData(); });
-            }, TimeSpan.FromMinutes(_refreshInterval));
+            }, TimeSpan.FromMinutes(RefreshInterval));
         }
 
         private void InitializeCountdownTimer()
@@ -60,7 +60,7 @@ namespace Weather.ViewModel
 
         private void UpdateCountdownTimer()
         {
-            NextRefresh = Updated.AddMinutes(_refreshInterval) - DateTime.Now;
+            NextRefresh = Updated.AddMinutes(RefreshInterval) - DateTime.Now;
         }
 
         public DateTime Updated
@@ -81,7 +81,6 @@ namespace Weather.ViewModel
             }
 
             Updated = DateTime.Now;
-            await Lights.Disco();
         }
 
         public async Task Initialize()

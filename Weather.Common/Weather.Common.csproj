@@ -126,6 +126,7 @@
     <Compile Include="Model\ForecastResponse.cs" />
     <Compile Include="Model\InsideEnvironment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConversionHelper.cs" />
     <EmbeddedResource Include="Properties\Weather.Common.rd.xml" />
   </ItemGroup>
   <ItemGroup>

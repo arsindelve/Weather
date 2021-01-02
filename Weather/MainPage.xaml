@@ -84,7 +84,7 @@
                         </Border>
 
                         <Border Grid.Row="1" Grid.Column="1" Margin="10" Height="45"  BorderBrush="Gray" BorderThickness="0" >
-                            <TextBlock FontSize="20"  FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.OutsideWeather.Updated, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}Updated {0:HH:mm}'}"></TextBlock>
+                            <TextBlock FontSize="20"  FontWeight="Bold" TextAlignment="Center" Text="{x:Bind _viewModel.OutsideWeather.CurrentWeather.Pressure, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:F2} inHG'}"></TextBlock>
                         </Border>
 
                         <Border Margin="10" Height="45" Grid.Row="1" Grid.Column="2"  BorderBrush="Gray" BorderThickness="0" >
@@ -118,13 +118,15 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
 
+
                                     </Grid.ColumnDefinitions>
 
                                     <TextBlock FontSize="16" FontWeight="Bold" Margin="15 0 0 0" Text="{x:Bind ForecastTime, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:ddd H:mm}'}"></TextBlock>
                                     <TextBlock Grid.Column="1" FontSize="18" Margin="15 0 0 0" FontWeight="Bold" Foreground="{x:Bind Temperature, Mode=OneWay, Converter={StaticResource TemperatureConverter}}"   Text="{x:Bind Temperature, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:0}° F'}"></TextBlock>
-                                    <TextBlock Grid.Column="2" FontSize="16" FontWeight="Bold" Margin="15 0 0 0" Text="{x:Bind Precipitation, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0} Inches'}"></TextBlock>
-                                    <TextBlock Grid.Column="3" FontSize="16" FontWeight="Bold" Margin="15 0 0 0" Text="{x:Bind  Clouds, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0}%'}"></TextBlock>
+                                    <TextBlock Grid.Column="2" FontSize="16" FontWeight="Bold" Margin="15 0 0 0" Text="{x:Bind  Clouds, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0}% clouds'}"></TextBlock>
+                                    <TextBlock Grid.Column="3" FontSize="16" FontWeight="Bold" Margin="15 0 0 0" Text="{x:Bind ChanceOfPrecipitation, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:0} % POP'}"></TextBlock>
                                     <TextBlock Grid.Column="4" FontSize="16" FontWeight="Bold" Margin="15 0 0 0" Text="{x:Bind WindSpeed, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:0} mph'}"></TextBlock>
+
 
                                 </Grid>
                             </Border>
@@ -176,14 +178,14 @@
                         <Border CornerRadius="10"  Margin="20"  Padding="30" Background="#CC121212" Grid.Row="0">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock FontWeight="Bold" TextAlignment="Center" >Temperature:</TextBlock>
-                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.Environment.Temperature, Mode=OneWay}" ></TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.Environment.Temperature, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:F1}° F'}" ></TextBlock>
                             </StackPanel>
                         </Border>
 
                         <Border CornerRadius="10" Margin="20"  Padding="30" Background="#CC121212" Grid.Row="1">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock FontWeight="Bold" TextAlignment="Center" >Humidity:</TextBlock>
-                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.Environment.Humidity, Mode=OneWay}"></TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.Environment.Humidity, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:F1} %'}"></TextBlock>
                             </StackPanel>
                         </Border>
 
@@ -191,7 +193,7 @@
                         <Border CornerRadius="10" Margin="20"  Padding="30" Background="#CC121212" Grid.Row="2">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock FontWeight="Bold" TextAlignment="Center" >Pressure:</TextBlock>
-                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.Environment.Pressure, Mode=OneWay}"></TextBlock>
+                                <TextBlock Foreground="Chartreuse" FontWeight="Bold" Margin="10 0" TextAlignment="Center" Text="{x:Bind _viewModel.InsideEnvironment.Environment.Pressure, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:F2} inHG'}"></TextBlock>
                             </StackPanel>
                         </Border>
 

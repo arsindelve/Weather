@@ -7,12 +7,13 @@ using Weather.API;
 using Weather.Common.Model;
 using Weather.Fake;
 using Weather.SenseHat;
+using Weather.Common;
 
 namespace Weather.ViewModel
 {
     public class OutsideWeatherViewModel: BaseViewModel
     {
-        private const bool FakeData = true;
+        private const bool FakeData = false;
         private readonly IWeatherApiClient _client;
 
         private CurrentWeatherResponse _currentWeather;
@@ -113,6 +114,7 @@ namespace Weather.ViewModel
             {
                 Forecast = new ObservableCollection<ForecastResponse>(await _client.Forecast());
                 CurrentWeather = await _client.CurrentWeather();
+                
             }
 
             Updated = DateTime.Now;
