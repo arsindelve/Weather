@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using Windows.Storage.Search;
 using Windows.System.Threading;
 using Windows.UI.Core;
 using Weather.API;
@@ -17,6 +18,8 @@ namespace Weather
         private ObservableCollection<ForecastResponse> _forecast;
         private DateTime _updated;
         private string _dallasBackground;
+        private TimeSpan _nextRefresh;
+        private const int ForecastRefreshMinutes = 45;
 
         public CurrentWeatherResponse CurrentWeather
         {
@@ -31,13 +34,30 @@ namespace Weather
         public ObservableCollection<ForecastResponse> Forecast
         {
             get => _forecast;
-            private set { _forecast = value; OnPropertyChanged(); }
+            private set
+            {
+                _forecast = value;
+                OnPropertyChanged();
+            }
         }
 
         public string DallasBackground
         {
             get => _dallasBackground;
-            private set { _dallasBackground = value; OnPropertyChanged(); }
+            private set
+            {
+                _dallasBackground = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TimeSpan NextRefresh
+        {
+            get => _nextRefresh;
+            set
+            {
+                _nextRefresh = value; OnPropertyChanged();
+            }
         }
 
         public DateTime Updated
@@ -50,28 +70,46 @@ namespace Weather
         {
             _client = client;
             DallasBackground = "Assets/night.jpg";
+            NextRefresh = TimeSpan.FromMinutes(ForecastRefreshMinutes);
+
+            InitializeForecastTimer();
+            InitializeCountdownTimer();
+        }
+
+        private void InitializeCountdownTimer()
+        {
             ThreadPoolTimer timer = ThreadPoolTimer.CreatePeriodicTimer(async (t) =>
             {
                 await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
                     CoreDispatcherPriority.Normal,
-                    async () =>
-                    {
-                        await GetForecast();
-                    });
+                    UpdateCountdownTimer);
+            }, TimeSpan.FromMilliseconds(500));
+        }
 
-            }, TimeSpan.FromSeconds(20));
+        private void UpdateCountdownTimer()
+        {
+            NextRefresh = Updated.AddMinutes(ForecastRefreshMinutes) - DateTime.Now;
+        }
+
+        private void InitializeForecastTimer()
+        {
+            ThreadPoolTimer timer = ThreadPoolTimer.CreatePeriodicTimer(async (t) =>
+            {
+                await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                    CoreDispatcherPriority.Normal,
+                    async () => { await GetForecast(); });
+            }, TimeSpan.FromMinutes(ForecastRefreshMinutes));
         }
 
         private async Task GetForecast()
         {
-            //Forecast = new ObservableCollection<ForecastResponse>(await _client.Forecast());
-            //CurrentWeather = await _client.CurrentWeather();
+            Forecast = new ObservableCollection<ForecastResponse>(await _client.Forecast());
+            CurrentWeather = await _client.CurrentWeather();
 
-            Forecast = new ObservableCollection<ForecastResponse>(FakeForecast.GetForecast());
-            CurrentWeather = new FakeCurrentWeatherResponse();
+            //Forecast = new ObservableCollection<ForecastResponse>(FakeForecast.GetForecast());
+            //CurrentWeather = new FakeCurrentWeatherResponse();
 
             Updated = DateTime.Now;
-
             DallasBackground = Updated.Hour >= 19 ? "Assets/night.jpg" : "Assets/day.jpg";
 
             await Lights.Disco();
