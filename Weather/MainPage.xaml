@@ -7,8 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converter="using:Weather.Converter"
     xmlns:api="using:Weather.API"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Page.Resources>
         <converter:StringFormatConverter x:Key="StringFormatConverter" />
@@ -29,7 +28,7 @@
             </Grid.RowDefinitions>
 
             <Grid.Background>
-                <ImageBrush ImageSource="Assets/day.jpg" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="{x:Bind _viewModel.DallasBackground}" Stretch="UniformToFill"/>
             </Grid.Background>
 
             <Border CornerRadius="5" Margin="20 20 20 0" Padding="8"   BorderThickness="0" Grid.Row="0" Background="#99121212"  >

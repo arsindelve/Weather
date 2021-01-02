@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Threading;
 using System.Threading.Tasks;
 using Windows.System.Threading;
-using Windows.UI.Xaml;
+using Windows.UI.Core;
 using Weather.API;
+using Weather.SenseHat;
 
 namespace Weather
 {
@@ -15,7 +15,7 @@ namespace Weather
         private CurrentWeatherResponse _currentWeather;
         private ObservableCollection<ForecastResponse> _forecast;
         private DateTime _updated;
-        private Timer _timer;
+        private string _dallasBackground;
 
         public CurrentWeatherResponse CurrentWeather
         {
@@ -33,6 +33,12 @@ namespace Weather
             private set { _forecast = value; OnPropertyChanged(); }
         }
 
+        public string DallasBackground
+        {
+            get => _dallasBackground;
+            set { _dallasBackground = value; OnPropertyChanged(); }
+        }
+
         public DateTime Updated
         {
             get => _updated;
@@ -42,15 +48,31 @@ namespace Weather
         public WeatherViewModel(IWeatherApiClient client)
         {
             _client = client;
-        }
+            DallasBackground = "Assets/night.jpg";
+            ThreadPoolTimer timer = ThreadPoolTimer.CreatePeriodicTimer(async (t) =>
+            {
+                await Windows.ApplicationModel.Core.CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(
+                    CoreDispatcherPriority.Normal,
+                    async () =>
+                    {
+                        await GetForecast();
+                    });
 
-     
+            }, TimeSpan.FromMinutes(1));
+        }
 
         private async Task GetForecast()
         {
-            Forecast = new ObservableCollection<ForecastResponse>(await _client.Forecast());
-            CurrentWeather = await _client.CurrentWeather();
+            //Forecast = new ObservableCollection<ForecastResponse>(await _client.Forecast());
+            //CurrentWeather = await _client.CurrentWeather();
+
+            Forecast = new ObservableCollection<ForecastResponse>();
+            CurrentWeather = new CurrentWeatherResponse();
+            
             Updated = DateTime.Now;
+
+            DallasBackground = Updated.Hour >= 19 ? "Assets/night.jpg" : "Assets/day.jpg";
+            await Lights.Disco();
         }
 
         public async Task Initialize()

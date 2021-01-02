@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather", "Weather\Weather.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.API", "Weather.API\Weather.API.csproj", "{089B9CCA-0927-4EFB-A707-69DD18410726}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.SenseHat", "Weather.SenseHat\Weather.SenseHat.csproj", "{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,26 @@ Global
 		{089B9CCA-0927-4EFB-A707-69DD18410726}.Release|x64.Build.0 = Release|x64
 		{089B9CCA-0927-4EFB-A707-69DD18410726}.Release|x86.ActiveCfg = Release|x86
 		{089B9CCA-0927-4EFB-A707-69DD18410726}.Release|x86.Build.0 = Release|x86
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Debug|ARM.ActiveCfg = Debug|ARM
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Debug|ARM.Build.0 = Debug|ARM
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Debug|ARM64.Build.0 = Debug|ARM64
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Debug|x64.ActiveCfg = Debug|x64
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Debug|x64.Build.0 = Debug|x64
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Debug|x86.ActiveCfg = Debug|x86
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Debug|x86.Build.0 = Debug|x86
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|ARM.ActiveCfg = Release|ARM
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|ARM.Build.0 = Release|ARM
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|ARM64.ActiveCfg = Release|ARM64
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|ARM64.Build.0 = Release|ARM64
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|x64.ActiveCfg = Release|x64
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|x64.Build.0 = Release|x64
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|x86.ActiveCfg = Release|x86
+		{E22B70F0-E1E7-4C28-88B5-62F2DEAC42F2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
